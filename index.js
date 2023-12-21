@@ -37,7 +37,7 @@ async function run() {
     app.post("/tasks", async (req, res) => {
       try {
         const newTask = req.body;
-        console.log(newTask);
+        console.log("newTask : ",newTask);
 
         const result = await tasksCollection.insertOne(newTask);
         res.send(result);
@@ -78,6 +78,9 @@ async function run() {
         };
 
         const result = await tasksCollection.updateOne(filter, task, options);
+
+        res.send(result);
+        
       } catch (err) {
         console.log(err);
       }
